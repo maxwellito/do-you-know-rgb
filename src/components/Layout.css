@@ -1,0 +1,47 @@
+.layout {
+  display: grid;
+  grid-template-columns: 50% calc(50%);
+  grid-template-rows: 3rem calc(25% - 1.5rem) calc(25% - 1.5rem) calc(25% - 1.5rem) calc(25% - 1.5rem) 3rem;
+  height: min(800px, calc(100% - 2 * var(--layout-margin)));
+  width: min(70vh, calc(100% - 2 * var(--layout-margin)));
+  color: var(--foreground);
+  border: 1px solid currentColor;
+}
+
+.layout-mono {
+  grid-template-areas:
+    "main    main"
+    "main    main  "
+    "main    main  "
+    "main    main  "
+    "main    main  "
+    "action  action";
+}
+
+.layout-duo {
+  grid-template-areas:
+    "main    main"
+    "main    main  "
+    "main    main  "
+    "main    main  "
+    "main    main  "
+    "action1 action2";
+}
+
+.layout-multi {
+  grid-template-areas:
+    "header  header "
+    "main    main   "
+    "main    main   "
+    "action1 action2"
+    "action3 action4"
+    "footer  footer ";
+}
+
+.layout > * {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--foreground)
+}

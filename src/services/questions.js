@@ -1,7 +1,7 @@
 export function generateQuiz () {
   const dataset = [];
-  for (let i = 0; i < 10; i++) {
-    dataset.push(generateQuestion(2 + Math.floor((10-i)/3)));
+  for (let i = 0; i < 20; i++) {
+    dataset.push(generateQuestion(20-i));
   }
   return dataset;
 }

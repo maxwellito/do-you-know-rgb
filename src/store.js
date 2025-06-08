@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { generateQuiz } from './questions';
+import { generateQuiz } from './services/questions';
 
 export const useColorStore = create((set) => ({
 
@@ -23,8 +23,8 @@ export const useColorStore = create((set) => ({
     if (currentQuestion.result !== undefined) {
       return state;
     }
+    currentQuestion.result = choice === currentQuestion.answer;
     state.currentQuestion = {...currentQuestion};
-    state.currentQuestion.result = choice === currentQuestion.answer;
     return {...state};
   }),
   goToNextQuestion: () => set((state) => {

@@ -1,0 +1,9 @@
+.color-head {
+  text-transform: uppercase;
+}
+
+.color-head:before {
+  content: '#';
+  font-size: .75em;
+  margin-top: .2em;
+}
