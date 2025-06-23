@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import ColorChoice from './ColorChoice.js';
+import Layout from "./Layout";
 import './Question.css';
 
 function Question({question, onSubmit}) {
@@ -8,7 +9,7 @@ function Question({question, onSubmit}) {
 
   if (result !== null) {
     const classname = result ? 'success' : 'failed';
-    return <div className={"layout layout-multi " + classname}>
+    return <Layout type={"multi " + classname}>
       <div className="layout-header"></div>
       <div className="layout-main color-head">{question?.answer.substring(1)}</div>
       { question.choices
@@ -22,10 +23,10 @@ function Question({question, onSubmit}) {
         className="layout-footer action" 
         onClick={() => onSubmit(result)} 
       >NEXT{result ? ' COLOR' : ''}</button>
-    </div>
+    </Layout>
   }
   else {
-    return <div className="layout layout-multi">
+    return <Layout type="multi">
       <div className="layout-header">PICK THE RIGHT COLOR</div>
       <div className="layout-main color-head">{question?.answer.substring(1)}</div>
       { question.choices
@@ -37,7 +38,7 @@ function Question({question, onSubmit}) {
           onClick={() => setResult(c === question.answer)} 
         ></ColorChoice>) }
       <div className="layout-footer"></div>
-    </div>
+    </Layout>
   }
 }
 

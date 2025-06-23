@@ -6,7 +6,7 @@ function themeClass(color) {
 }
 
 export default function ColorChoice({index, color, state, onClick = () => {}}) {
-  const classes = [`app-action${index}`];
+  const classes = [`layout-action${index}`];
   let children = null;
   if (state !== "initial") {
     classes.push(themeClass(color));

@@ -1,47 +1,213 @@
 .layout {
+  --col-unit: min(calc(80vmin / 2), calc(((100% - 2 * var(--layout-margin)) / 2)));
+  --row-unit: min(calc(80svh / 10), calc(((100% - 2 * var(--layout-margin))) / 10));
+  --row-double: calc(var(--row-unit) * 2);
+
   display: grid;
-  grid-template-columns: 50% calc(50%);
-  grid-template-rows: 3rem calc(25% - 1.5rem) calc(25% - 1.5rem) calc(25% - 1.5rem) calc(25% - 1.5rem) 3rem;
-  height: min(800px, calc(100% - 2 * var(--layout-margin)));
-  width: min(70vh, calc(100% - 2 * var(--layout-margin)));
+  grid-template-columns: 1fr var(--col-unit) var(--col-unit) 1fr;
+  grid-template-rows: 1fr var(--row-unit) var(--row-double) var(--row-double) var(--row-double) var(--row-double) var(--row-unit) 1fr;
+  height: 100vh;
+  width: 100vw;
   color: var(--foreground);
-  border: 1px solid currentColor;
+  row-gap: 2px;
+  column-gap: 2px;
+  background-color: #eee;
 }
 
 .layout-mono {
   grid-template-areas:
-    "main    main"
-    "main    main  "
-    "main    main  "
-    "main    main  "
-    "main    main  "
-    "action  action";
+    "d_tr   d_t1     d_t1     d_tl"
+    "d_r1   main     main     d_l1"
+    "d_r1   main     main     d_l1"
+    "d_r1   main     main     d_l1"
+    "d_r1   main     main     d_l1"
+    "d_r1   main     main     d_l1"
+    "d_r2   action   action   d_l2"
+    "d_br   d_b1     d_b1     d_bl";
+  .d_r3, .d_r4, .d_r5, .d_l3, .d_l4, .d_l5, .d_t2, .d_b2 {
+    display: none;
+  }
 }
 
 .layout-duo {
   grid-template-areas:
-    "main    main"
-    "main    main  "
-    "main    main  "
-    "main    main  "
-    "main    main  "
-    "action1 action2";
+    "d_tr   d_t1     d_t1     d_tl"
+    "d_r1   main     main     d_l1"
+    "d_r1   main     main     d_l1"
+    "d_r1   main     main     d_l1"
+    "d_r1   main     main     d_l1"
+    "d_r1   main     main     d_l1"
+    "d_r2   action1  action2  d_l2"
+    "d_br   d_b1     d_b1     d_bl";
+  .d_r3, .d_r4, .d_r5, .d_l3, .d_l4, .d_l5, .d_t2, .d_b2 {
+    display: none;
+  }
 }
 
 .layout-multi {
   grid-template-areas:
-    "header  header "
-    "main    main   "
-    "main    main   "
-    "action1 action2"
-    "action3 action4"
-    "footer  footer ";
+    "d_tr   d_t1     d_t1    d_tl"
+    "d_r1   header   header  d_l1"
+    "d_r2   main     main    d_l2"
+    "d_r2   main     main    d_l2"
+    "d_r3   action1  action2 d_l3"
+    "d_r4   action3  action4 d_l4"
+    "d_r5   footer   footer  d_l5"
+    "d_br   d_b1     d_b1    d_bl";
+
+  .d_t2, .d_b2 {
+    display: none;
+  }
 }
+
+
+.d_tr { grid-area: d_tr; border-radius: 0 0 1rem 0;}
+.d_tl { grid-area: d_tl; border-radius: 0 0 0 1rem;}
+.d_bl { grid-area: d_bl; border-radius: 1rem 0 0 0;}
+.d_br { grid-area: d_br; border-radius: 0 1rem 0 0;}
+
+.d_r1 { grid-area: d_r1; border-radius: 0 1rem 1rem 0;}
+.d_r2 { grid-area: d_r2; border-radius: 0 1rem 1rem 0;}
+.d_r3 { grid-area: d_r3; border-radius: 0 1rem 1rem 0;}
+.d_r4 { grid-area: d_r4; border-radius: 0 1rem 1rem 0;}
+.d_r5 { grid-area: d_r5; border-radius: 0 1rem 1rem 0;}
+
+.d_l1 { grid-area: d_l1; border-radius: 1rem 0 0 1rem;}
+.d_l2 { grid-area: d_l2; border-radius: 1rem 0 0 1rem;}
+.d_l3 { grid-area: d_l3; border-radius: 1rem 0 0 1rem;}
+.d_l4 { grid-area: d_l4; border-radius: 1rem 0 0 1rem;}
+.d_l5 { grid-area: d_l5; border-radius: 1rem 0 0 1rem;}
+
+.d_t1 { grid-area: d_t1; border-radius: 0 0 1rem 1rem;}
+.d_t2 { grid-area: d_t2; border-radius: 0 0 1rem 1rem;}
+
+.d_b1 { grid-area: d_b1; border-radius: 1rem 1rem 0 0;}
+.d_b2 { grid-area: d_b2; border-radius: 1rem 1rem 0 0;}
+
 
 .layout > * {
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--foreground)
+  background-color: white;
+}
+
+.layout-header {
+  grid-area: header;
+}
+.layout-main {
+  grid-area: main;
+  font-size: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.layout-mono .layout-main {
+  text-align: left;
+  justify-content: left;
+  line-height: .8;
+  padding: .2em;
+  font-size: 7rem;
+}
+
+.layout.success .layout-main {
+  color: white;
+  background-color: #4a1;
+}
+.layout.failed {
+  animation: shake 0.12s ease-in-out 0s 3;
+}
+.layout.failed .layout-main {
+  color: white;
+  background-color: #c31;
+}
+
+.layout-action {
+  grid-area: action;
+}
+.layout-action1 {
+  grid-area: action1;
+}
+.layout-action2 {
+  grid-area: action2;
+}
+.layout-action3 {
+  grid-area: action3;
+}
+.layout-action4 {
+  grid-area: action4;
+}
+
+.layout-footer {
+  grid-area: footer;
+}
+
+
+.layout-header,
+.layout-main,
+.layout-action,
+.layout-action1,
+.layout-action2,
+.layout-action3,
+.layout-action4,
+.layout-footer {
+  border-radius: 1rem;
+}
+
+button.action {
+  font-size: 1.5em;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.5rem;
+  }
+  75% {
+    margin-left: -0.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
+}
+
+
+.background-rainbow {
+  background-image: linear-gradient(45deg,
+    #E40303 0%,      /* RAINBOW */
+    #FF8C00 8.333%,  /* WRAINBO */
+    #FFED00 16.666%, /* OWRAINB */
+    #008026 25%,     /* BOWRAIN */
+    #004DFF 33.333%, /* NBOWRAI */
+    #750787 41.667%, /* INBOWRA */
+    #E40303 50%,     /* AINBOWR */
+    #FF8C00 58.333%, /* RAINBOW */
+    #FFED00 66.666%, /* WRAINBO */
+    #008026 75%,     /* OWRAINB */
+    #004DFF 83.333%, /* BOWRAIN */
+    #750787 91.667%, /* NBOWRAI */
+    #E40303 100%     /* RAINBOW */
+  );
+  background-size: 800px 800px;
+  animation: background-scroll 3s linear infinite;
+}
+
+.background-sober {
+  background-image: linear-gradient(45deg,
+    #e5e5e5 0%, 
+    #bbbbbb 25%,
+    #e5e5e5 50%,
+    #bbbbbb 75%,
+    #e5e5e5 100% 
+  );
+  background-size: 800px 800px;
+  animation: background-scroll 3s linear infinite;
+}
+
+@keyframes background-scroll {
+  from {background-position: 0;}
+  to {background-position: 800px;}
 }

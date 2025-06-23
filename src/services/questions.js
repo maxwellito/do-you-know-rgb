@@ -1,12 +1,15 @@
 export function generateQuiz () {
   const dataset = [];
-  for (let i = 0; i < 20; i++) {
-    dataset.push(generateQuestion(20-i));
+  const length = 20;
+  for (let i = 0; i < length; i++) {
+    const f = Math.floor(Math.pow(i/length, 2) * length);
+    dataset.push(generateQuestion(20-f));
   }
   return dataset;
 }
 
 function generateQuestion(margin) {
+  console.log(margin)
   const color = [
     Math.floor(Math.random() * 16),
     Math.floor(Math.random() * 16),
