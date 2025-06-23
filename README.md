@@ -7,3 +7,7 @@ Heavily inspired from the excellent [Guess my RGB](https://susam.net/myrgb.html)
 ## Development
 
 This is a classic create-react-app repository. Run `npm start` to start local development.
+
+## Deploy
+
+Run `npm run deploy -- -m "Deploy the app to GitHub Pages"`
