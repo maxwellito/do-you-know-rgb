@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/do-you-know-rgb/static/css/main.4844507e.css",
+    "main.js": "/do-you-know-rgb/static/js/main.b7245e60.js",
+    "static/media/CQMono.otf": "/do-you-know-rgb/static/media/CQMono.87325c3ca57611713c8e.otf",
+    "index.html": "/do-you-know-rgb/index.html",
+    "main.4844507e.css.map": "/do-you-know-rgb/static/css/main.4844507e.css.map",
+    "main.b7245e60.js.map": "/do-you-know-rgb/static/js/main.b7245e60.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4844507e.css",
+    "static/js/main.b7245e60.js"
+  ]
+}
