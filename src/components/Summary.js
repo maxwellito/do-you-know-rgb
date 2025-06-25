@@ -7,7 +7,7 @@ function share () {
     url: "https://maxwellito.github.io/do-you-know-rgb",
   };
   if (navigator.canShare && navigator.canShare(shareData)) {
-    navigator.share();
+    navigator.share(shareData);
   } else {
     window.alert('Sorry, your browser doesn\'t support it')
   }
